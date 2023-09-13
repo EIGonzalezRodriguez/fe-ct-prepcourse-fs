@@ -102,11 +102,26 @@ function multiplicarArgumentos() {
    // Si no se pasan argumentos retorna 0. Si se pasa un argumento, simplemente retórnalo.
    // [PISTA]: "arguments" es un arreglo.
    // Tu código:
+   if (arguments.length === 0){
+      return 0
+   }
+   let producto = 1
+   for(let i = 0; i < arguments.length; i++){
+      producto *= arguments[i]
+   }
+   return producto
 }
 
 function cuentoElementos(array) {
    // Desarrolla una función que retorne la cantidad de elementos del arreglo cuyo valor sea mayor que 18.
-   // Tu código:    
+   // Tu código:  
+   let conteo = 0;  
+   for (let i = 0; i < array.length ; i++){
+      if (array[i] > 18){
+         conteo++;
+      }
+   }
+   return conteo;
 }
 
 function diaDeLaSemana(numeroDeDia) {
@@ -124,19 +139,29 @@ function empiezaConNueve(num) {
    // Esta función recibe por parámetro un número.
    // Debe retornar true si el entero inicia con 9 y false en otro caso.
    // Tu código:
+   let numstr = num.toString();
+   if(numstr.startsWith(9)){
+      return true;
+   }else{
+      return false;
+   }
+
 }
 
 function todosIguales(array) {
    // Si todos los elementos del arreglo son iguales, retornar true.
    // Caso contrario retornar false.
    // Tu código:
-   for (let i = 0; i < array.length; i++){
-      if (array[i] === array[i]){
-         return true;
-      }else{               //esta fallando el false 
+   if (array.length === 0){
+      return true;
+   }
+   let referencia = array[0];
+   for (let i = 1; i < array.length; i++){
+      if(referencia !== array[i]){
          return false;
       }
    }
+   return true;
 }
 
 function mesesDelAño(array) {
@@ -144,18 +169,42 @@ function mesesDelAño(array) {
    // "Marzo" y "Noviembre", guardarlos en un nuevo arreglo y retornarlo.
    // Si alguno de los meses no está, retornar el string: "No se encontraron los meses pedidos".
    // Tu código:
+   let nuevoArray = [];
+   for(let i = 0 ; i < array.length ; i++){
+      if(array[i] === 'Enero' || array[i] === 'Marzo' || array[i] === 'Noviembre'){
+         nuevoArray.push(array[i]);
+      }
+   }
+   if(nuevoArray.includes('Enero') && nuevoArray.includes('Marzo') && nuevoArray.includes('Noviembre')){
+      return nuevoArray;
+   }else{
+      return 'No se encontraron los meses pedidos';
+   }
 }
 
 function tablaDelSeis() {
    // Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
    // La función devuelve un arreglo con los resultados de la tabla de multiplicar del 6 en orden creciente.
    // Tu código:
+   let multiplo = 6;
+   let tablaDeMultiplicar = [];
+   for (let i = 0; i <= 10; i++){
+      tablaDeMultiplicar.push(multiplo * i)
+   }
+   return tablaDeMultiplicar
 }
 
 function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+   let valoresMayoresACien = [];
+   for (let i = 0; i < array.length ; i++){
+      if(array[i] > 100){
+         valoresMayoresACien.push(array[i])
+      }
+   }
+   return valoresMayoresACien;
 }
 
 /* ----------------------------------------------------------------------------------
@@ -169,6 +218,19 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+   var nuevoValor = [];
+   for (let i = 0; i < 10 ; i++) {
+      num += 2;
+      nuevoValor.push(num);
+
+      if (num === i) {
+         break; // Utiliza 'break' para interrumpir el bucle
+      }
+   }
+   if (nuevoValor.length < 10) {
+      return 'Se interrumpió la ejecución';
+   }
+   return nuevoValor;
 }
 
 function continueStatement(num) {
@@ -178,6 +240,14 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+   var nuevoValor = [];
+   for (let i = 0; i < 10 ; i++) {
+      if (i === 5) {
+         continue; 
+      }
+      num += 2;
+      nuevoValor.push(num);
+   }return nuevoValor;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
